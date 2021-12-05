@@ -5,12 +5,13 @@
  */
 package main;
 
+import java.util.ArrayList;
 import java.util.List;
 import model.Histogram;
 import model.Mail;
 import view.HistogramDisplay;
 import view.MailHistogramBuilder;
-import view.MailHistogramReader;
+import view.MailListReaderBD;
 
 /**
  *
@@ -19,7 +20,7 @@ import view.MailHistogramReader;
 public class Kata5P2 {
 
     private static String nameFile;
-    private static List<Mail> mailList;
+    private static ArrayList<Mail> mailList;
     private static Histogram<String> histogram;
     private static HistogramDisplay histogramdisplay;
     public static void main(String[] args) {
@@ -34,7 +35,8 @@ public class Kata5P2 {
     }
 
     private static void input() {
-        mailList = MailHistogramReader.read(nameFile);
+        MailListReaderBD emails = new MailListReaderBD();
+        mailList = emails.read();
     }
 
     private static void process() {
